@@ -2,6 +2,7 @@
   "name": "nw-demo",
   "main": "index.html",
   "window": {
-    "show": false
+    "show": false,
+    "toolbar": true
   }
 }
