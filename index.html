@@ -13,12 +13,30 @@
   <div id="main-view">
     <div id="sidebar"></div>
     <div id="content">
-      <pre id="editor">function foo(items) {
-          var i;
-          for (i = 0; i &lt; items.length; i++) {
-              alert("Ace Rocks " + items[i]);
-          }
-      }</pre>
+      <div id="tabs">
+        <ul>
+            <li><a href="#fragment-1">One</a><span class="ui-icon ui-icon-close"/></li>
+            <li><a href="#fragment-2">Two</a><span class="ui-icon ui-icon-close"/></li>
+            <li><a href="#fragment-3">Three</a><span class="ui-icon ui-icon-close"/></li>
+        </ul>
+        <div id="fragment-1">
+            <pre id="editor">function foo(items) {
+                var i;
+                for (i = 0; i &lt; items.length; i++) {
+                    alert("Ace Rocks " + items[i]);
+                }
+            }</pre>
+        </div>
+        <div id="fragment-2">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        </div>
+        <div id="fragment-3">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        </div>
+      </div>
     </div>
   </div>
     

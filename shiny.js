@@ -67,3 +67,6 @@ function chooseFile(name) {
 		})
 	});
 }
+
+// Init tabs
+$('#tabs').tabs().find(".ui-tabs-nav").sortable({axis:'x'})
