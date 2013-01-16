@@ -19,6 +19,7 @@ body {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	background-color: #c9d1d1;
 }
 
 .main-menu:after {
@@ -32,6 +33,12 @@ body {
 
 .menuItem {
 	float: left;
+	padding: 2px 7px;
+	cursor: default;
+	-webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
 }
 
 .main-view {
