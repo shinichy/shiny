@@ -3,94 +3,93 @@ html, body {
 	overflow: hidden;
 }
 
+.box-orient (@value) {
+	-webkit-box-orient: @value;
+	-moz-box-orient: @value;
+	-ms-box-orient: @value;
+	box-orient: @value;
+}
+
+.box-flex (@value) {
+	-webkit-box-flex: @value;
+	-moz-box-flex: @value;
+	-ms-box-flex: @value;
+	box-flex: @value;
+}
+
+.user-select (@value: none) {
+	-webkit-user-select: @value;
+  -moz-user-select: @value;
+  -ms-user-select: @value;
+  user-select: @value;
+}
+
+.display-box {
+	display: -webkit-box; display: -moz-box; display: box;
+}
+
+.no-margin-padding {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	display: -webkit-box;
-	display: box;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	-ms-box-orient: vertical;
-	box-orient: vertical;
+	.display-box;
 	width: 100%;
-	margin: 0;
-	padding: 0;
+	.no-margin-padding;
+	.box-orient(vertical);
 }
 
-.main-menu {
+#main-menu {
 	list-style: none;
-	margin: 0;
-	padding: 0;
 	background-color: #c9d1d1;
-}
-
-.main-menu:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
+	.no-margin-padding;
+	.box-orient(vertical);
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	};
 }
 
 .menuItem {
 	float: left;
 	padding: 2px 7px;
 	cursor: default;
-	-webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
+	.user-select(none);
 }
 
-.main-view {
-	display: -webkit-box;
-	display: box;
-	-webkit-box-orient: horizontal;
-	-moz-box-orient: horizontal;
-	-ms-box-orient: horizontal;
-	box-orient: horizontal;
-	-webkit-box-flex: 1;
-	-moz-box-flex: 1;
-	-ms-box-flex: 1;
-	box-flex: 1;
+#main-view {
+	.display-box;
+	.box-orient(horizontal);
+	.box-flex(1);
 }
 
-.sidebar {
-	display: -webkit-box;
-	display: box;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	-ms-box-orient: vertical;
-	box-orient: vertical;
+#sidebar {
+	.display-box;
+	.box-orient(vertical);
 	width: 200px;
 	background-color: gray;
 }
 
-.dragbar {
-	display: -webkit-box;
-	display: box;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	-ms-box-orient: vertical;
-	box-orient: vertical;
+#dragbar {
+	.display-box;
+	.box-orient(vertical);
 	width: 5px;
 	background-color: gray;
 	cursor: col-resize;
 }
 
-.content {
-	display: -webkit-box;
-	display: box;
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	-ms-box-orient: vertical;
-	box-orient: vertical;
-	-webkit-box-flex: 1;
-	-moz-box-flex: 1;
-	-ms-box-flex: 1;
-	box-flex: 1;
+#content {
+	.display-box;
+	.box-orient(vertical);
+	.box-flex(1);
 }
 
-.editor {
+#editor {
 	position: absolute;
 	width: 100%;
 	height: 100%;

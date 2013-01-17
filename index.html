@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Shiny</title>
+  <link rel="stylesheet/less" href="styles/shiny.less">
+  <script src="lib/less-1.3.3.min.js"></script>
   <link rel="stylesheet" href="styles/jquery-ui-1.9.2.custom.min.css">
-  <link rel="stylesheet" href="styles/shiny.css">
 </head>
 <body>
 
   <input style="display:none;" id="fileDialog" type="file" />
-  <ul id="main-menu" class="main-menu"></ul>
+  <ul id="main-menu"></ul>
 
-  <div class="main-view">
-    <div id="sidebar" class="sidebar"></div>
-    <div id="dragbar" class="dragbar"></div>
-    <div class="content">
-      <div id="tabs" class="tabs">
+  <div id="main-view">
+    <div id="sidebar"></div>
+    <div id="dragbar"></div>
+    <div id="content">
+      <div id="tabs">
         <ul id="tab-list">
           <li><a href="#editor-container">One</a><span class="ui-icon ui-icon-close"/></li>
         </ul>
         <div id="editor-container">
-          <pre id="editor" class="editor">function foo(items) {
+          <pre id="editor">function foo(items) {
             var i;
             for (i = 0; i &lt; items.length; i++) {
             alert("Ace Rocks " + items[i]);
