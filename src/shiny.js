@@ -23,7 +23,7 @@ define(function (require) {
   global.DEBUG = DEBUG;
 
   var SessionList = require('sessionList');
-  var TabListView = require('tabListView');
+  // var TabListView = require('tabListView');
   var EditorView = require('editorView');
   var MenuManager = require('menu/menuManager');
 
@@ -40,10 +40,10 @@ define(function (require) {
 
     MenuManager.init($('#main-menu'));
 
-    var tabListView = new TabListView({
-      el: $('#tabbar'),
-      collection: sessionList
-    });
+    // var tabListView = new TabListView({
+    //   el: $('#tabbar'),
+    //   collection: sessionList
+    // });
 
     // init file dialog
     $('#fileDialog').change(function (evt) {
