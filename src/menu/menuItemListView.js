@@ -4,8 +4,8 @@
 define(function (require, exports, module) {
   'use strict';
 
-  var MainMenuItemView = require('menuItemView').MainMenuItemView;
-  var DropdownMenuItemView = require('menuItemView').DropdownMenuItemView;
+  var MainMenuItemView = require('menu/menuItemView').MainMenuItemView;
+  var DropdownMenuItemView = require('menu/menuItemView').DropdownMenuItemView;
 
   var MenuItemListViewBase = Backbone.View.extend({
     tagName: 'ul',

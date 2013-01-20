@@ -25,7 +25,7 @@ define(function (require) {
   var SessionList = require('sessionList');
   var TabListView = require('tabListView');
   var EditorView = require('editorView');
-  var MenuManager = require('menuManager');
+  var MenuManager = require('menu/menuManager');
 
   function _onReady() {
     // init editor

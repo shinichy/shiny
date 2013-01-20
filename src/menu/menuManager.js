@@ -4,9 +4,9 @@
 define(function (require, exports) {
   'use strict';
 
-  var MenuItem = require('menuItem');
-  var MenuItemList = require('menuItemList');
-  var MainMenuItemListView = require('menuItemListView');
+  var MenuItem = require('menu/menuItem');
+  var MenuItemList = require('menu/menuItemList');
+  var MainMenuItemListView = require('menu/menuItemListView');
 
   function init(mainMenu) {
     var mainMenuList = new MenuItemList();

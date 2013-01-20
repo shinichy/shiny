@@ -4,7 +4,7 @@
 define(function (require, exports, module) {
   'use strict';
 
-  var MenuItemList = require('menuItemList');
+  var MenuItemList = require('menu/menuItemList');
 
   var MenuItem = Backbone.Model.extend({
     initialize: function () {
