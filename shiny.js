@@ -4,21 +4,10 @@
 require.config({
   paths: {
     ace: 'lib/ace',
-    // jquery: 'lib/jquery-1.8.3.min',
-    jqueryui: 'lib/jquery-ui-1.9.2.custom.min',
     encoding: 'lib/encoding'
-    // underscore: 'lib/underscore-min',
-    // backbone: 'lib/backbone-min'
   },
   // load not AMD compliant modules
   shim: {
-    // 'underscore': {
-    //   exports: '_'
-    // },
-    // 'backbone': {
-    //   deps: ['underscore', 'jquery'],
-    //   exports: 'Backbone'
-    // },
     'encoding': {
       exports: 'encoding'
     }
@@ -27,64 +16,38 @@ require.config({
 
 define(function (require) {
   var ace = require('ace/ace');
-  require('jqueryui');
 
   // Set global objects
   var DEBUG = true;
   var fn = Function, global = fn('return this')();
   global.DEBUG = DEBUG;
-  // global.$ = $;
-  // global._ = _;
-  // global.ace = ace;
-  // global.Backbone = Backbone;
 
-  // var ace = require('./lib/ace/ace');
-  // var fs = require('fs');
-  // var jschardet = require('jschardet');
-  // var gui = require('nw.gui');
-  var Session = require('session');
   var SessionList = require('sessionList');
-  var TabView = require('tabView');
   var TabListView = require('tabListView');
   var EditorView = require('editorView');
-  var MenuItem = require('menuItem');
-  var MenuItemList = require('menuItemList');
-  var MenuItemListView = require('menuItemListView');
-
-  // var win = gui.Window.get();
+  var MenuManager = require('menuManager');
 
   function _onReady() {
-  //   // Save size on close.
-  //   // win.on('close', function() {
-  //   //   localStorage.x = win.x;
-  //   //   localStorage.y = win.y;
-  //   //   localStorage.width = win.width;
-  //   //   localStorage.height = win.height;
-  //   //   this.close(true);
-  //   // });
-
     // init editor
     var editor = ace.edit('editor');
     editor.setTheme('ace/theme/twilight');
     editor.getSession().setMode('ace/mode/javascript');
     var sessionList = new SessionList();
     var editorView = new EditorView({
-      editor: editor, collection: sessionList});
+      editor: editor,
+      collection: sessionList
+    });
 
-    var mainMenu = new MenuItemList();
-    var mainMenuView = new MenuItemListView({el: $('#main-menu'),
-      collection: mainMenu});
-    var fileMenu = new MenuItem({name: 'File'});
-    mainMenu.add(fileMenu);
-    fileMenu.get('items').add(new MenuItem({name: 'New'}));
-    fileMenu.get('items').add(new MenuItem({name: 'Open'}));
-    mainMenu.add(new MenuItem({name: 'Edit'}));
+    MenuManager.init($('#main-menu'));
+
     var tabListView = new TabListView({
-      el: $('#tab-list'),
-      collection: sessionList});
+      el: $('#tabbar'),
+      collection: sessionList
+    });
 
     // init file dialog
-    $('#fileDialog').change(function(evt) {
+    $('#fileDialog').change(function (evt) {
+      console.log(evt);
     });
 
     // create menus
@@ -126,13 +89,7 @@ define(function (require) {
     // console.log('set menu');
     // Ti.UI.currentWindow.menu = menu;
 
-  //   var editMenu = new gui.Menu();
-  //   menubar.append(new gui.MenuItem({label: 'Edit', submenu: editMenu}));
-  //   editMenu.append(new gui.MenuItem({label: 'Undo', click: function() {
-  //     alert('Undo');
-  //   }}));
-  //   win.menu = menubar;
-
+    // init sidebar
     $('#dragbar').mousedown(function (e) {
       e.preventDefault();
       $(document).mousemove(function (e) {
@@ -143,17 +100,7 @@ define(function (require) {
     $(document).mouseup(function () {
       $(document).unbind('mousemove');
     });
+  }
 
-  //   // Init tabs
-  $('#tabs').tabs().find('.ui-tabs-nav').sortable({axis: 'x'});
-
-  //   // Restore last window size and position.
-  //   if (localStorage.width && localStorage.height) {
-  //     win.resizeTo(Number(localStorage.width), Number(localStorage.height));
-  //     win.moveTo(Number(localStorage.x), Number(localStorage.y));
-  //   }
-  //   win.show();
-}
-
-$(document).ready(_onReady);
+  $(document).ready(_onReady);
 });

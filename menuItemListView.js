@@ -4,23 +4,35 @@
 define(function (require, exports, module) {
   'use strict';
 
-  var MenuItemView = require('menuItemView');
+  var MainMenuItemView = require('menuItemView').MainMenuItemView;
+  var DropdownMenuItemView = require('menuItemView').DropdownMenuItemView;
 
-  var MenuItemListView = Backbone.View.extend({
+  var MenuItemListViewBase = Backbone.View.extend({
     tagName: 'ul',
-    className: 'menuItemList',
 
     initialize: function () {
       _.bindAll(this, 'appendItem');
       this.collection.on('add', this.appendItem);
     },
     appendItem: function (model) {
-      var view = new MenuItemView({model: model,
-        subMenuListView: new MenuItemListView(
+      var view = new this.menuItemView({model: model,
+        subMenuListView: new DropdownMenuItemListView(
         {collection: model.get('items')})});
+      if (this.className == 'nav') {
+        view.className = 'dropdown';
+      }
       this.$el.append(view.render().el);
     }
   });
 
-  module.exports = MenuItemListView;
+  var MainMenuItemListView = MenuItemListViewBase.extend({
+    menuItemView: MainMenuItemView
+  });
+
+  var DropdownMenuItemListView = MenuItemListViewBase.extend({
+    className: 'dropdown-menu',
+    menuItemView: DropdownMenuItemView
+  });
+
+  module.exports = MainMenuItemListView;
 });

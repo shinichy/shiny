@@ -4,9 +4,8 @@
 define(function (require, exports, module) {
   'use strict';
 
-  var MenuItemView = Backbone.View.extend({
+  var MenuItemViewBase = Backbone.View.extend({
     tagName: 'li',
-    className: 'menuItem',
     events: {
       'click': 'activate'
     },
@@ -16,14 +15,24 @@ define(function (require, exports, module) {
     },
     render: function () {
       this.$el.html(_.template(
-        $('#menuItem-template').html(),
+        $(this.templateId).html(),
         {name: this.model.get('name')}));
       return this;
     },
     activate: function () {
-      console.log(this.subMenuListView.el);
+      this.$el.append(this.subMenuListView.el);
     }
   });
 
-  module.exports = MenuItemView;
+  var MainMenuItemView = MenuItemViewBase.extend({
+    className: 'dropdown',
+    templateId: '#main-menu-item'
+  });
+
+  var DropdownMenuItemView = MenuItemViewBase.extend({
+    templateId: '#dropdown-menu-item'
+  });
+
+  module.exports.MainMenuItemView = MainMenuItemView;
+  module.exports.DropdownMenuItemView = DropdownMenuItemView;
 });

@@ -40,26 +40,24 @@ body {
 	.box-orient(vertical);
 }
 
-#main-menu {
-	list-style: none;
-	background-color: #c9d1d1;
-	.no-margin-padding;
-	.box-orient(vertical);
-	&:after {
-		visibility: hidden;
-		display: block;
-		font-size: 0;
-		content: " ";
-		clear: both;
-		height: 0;
-	};
+// Override bootstrap.css
+
+.navbar-inner {
+	padding-left: 5px;
+	min-height: 0;
 }
 
-.menuItem {
-	float: left;
-	padding: 2px 7px;
-	cursor: default;
-	.user-select(none);
+.navbar .nav > li > a {
+	outline: none !important;
+	padding: 2px 5px;
+}
+
+// End override
+
+#main-menu {
+	// background-color: #c9d1d1;
+	margin: 0;
+	.box-orient(vertical);
 }
 
 #main-view {
@@ -71,14 +69,14 @@ body {
 #sidebar {
 	.display-box;
 	.box-orient(vertical);
-	width: 200px;
+	width: 0px;
 	background-color: gray;
 }
 
 #dragbar {
 	.display-box;
 	.box-orient(vertical);
-	width: 5px;
+	width: 0px;
 	background-color: gray;
 	cursor: col-resize;
 }
@@ -95,85 +93,11 @@ body {
 	height: 100%;
 }
 
-.ui-resizable-handle.ui-resizable-e {
-	cursor: col-resize;
-}
-
-.ui-corner-all, .ui-corner-top {
-	-webkit-border-top-right-radius: 0;
-	border-top-right-radius: 0;
-	-webkit-border-top-left-radius: 0;
-	border-top-left-radius: 0;
-	-webkit-border-bottom-right-radius: 0;
-	border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-.ui-widget-content {
-	border: 0;
-	background-image: none;
-}
-
-.ui-tabs {
-	padding: 0;
-	position: static;
-}
-
-.ui-tabs .ui-tabs-nav {
-	padding: 0;
-}
-
-.ui-widget-header {
-	border: 0;
-	background-image: none;
-}
-
-.ui-tabs .ui-tabs-nav li {
-	margin: 0;
-	padding: 1px 5px;
-	outline: none;
-}
-
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active {
-	border: 0;
-	background-image: none;
-}
-
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default {
-	border: 0;
-	background-image: none;
-}
-
-.ui-tabs .ui-tabs-nav li a {
-	padding: 0;
-	font-size: 0.8rem;
+.tab {
+	text-decoration: none;
 	cursor: default;
-}
-
-.ui-tabs .ui-tabs-nav .ui-tabs-active a {
-	cursor: default;
-}
-
-.ui-tabs .ui-tabs-panel {
-	padding: 0;
-}
-
-.tabs li .ui-icon-close {
-	float: left;
-	cursor: pointer;
-}
-
-.ui-state-hover,
-.ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus {
-	border: 0;
-	background-image: none;
+	background-color: rgb(47,61,65);
+	color: white;
+	font-size: 0.9em;
+	padding: 3px 3px;
 }
