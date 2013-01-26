@@ -12,7 +12,6 @@ define(function (require, exports) {
       var reader = new FileReader();
       (function (path) {
         reader.onload = function () {
-          console.log(reader.result);
           SessionManager.setContent(path, reader.result);
         };
       })(files[0].name);

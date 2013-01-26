@@ -3,20 +3,18 @@
 
 require.config({
   paths: {
-    ace: 'lib/ace',
-    encoding: 'lib/encoding'
-  },
-  // load not AMD compliant modules
-  shim: {
-    'encoding': {
-      exports: 'encoding'
-    }
+    ace: 'lib/ace'
+    // jschardet: 'lib/jschardet'
   }
+  // load not AMD compliant modules
+  // shim: {
+  //   'jschardet': {
+  //     exports: 'jschardet'
+  //   }
+  // }
 });
 
 define(function (require) {
-  // var ace = require('ace/ace');
-
   // Set global objects
   var DEBUG = true;
   var fn = Function, global = fn('return this')();
@@ -29,51 +27,6 @@ define(function (require) {
 
     GroupManager.init($('#main-view'));
     MenuManager.init($('#main-menu'));
-
-    // var tabListView = new TabListView({
-    //   el: $('#tabbar'),
-    //   collection: sessionList
-    // });
-
-
-    // create menus
-    // var menubar = new gui.Menu({type: 'menubar'});
-    // var fileMenu = new gui.Menu();
-    // menubar.append(new gui.MenuItem({label: 'File', submenu: fileMenu}));
-    // fileMenu.append(new gui.MenuItem({label: 'Open...', click: function() {
-    //   $('#fileDialog').trigger('click');
-    // }}));
-    // var menu = Ti.UI.createMenu();
-    // var fileMenu = Ti.UI.createMenuItem('File');
-    // fileMenu.addItem('Open....', function() {
-    //   Ti.UI.currentWindow.openFileChooserDialog(function(args) {
-    //     if (args.length == 0) {return;}
-
-    //     var path = args[0];
-    //     console.log(path);
-    //     fs.readFile(path, function(err, buf) {
-    //       if (err) {
-    //         console.log(err);
-    //         return;
-    //       }
-    //       // var encoding = jschardet.detect(buf).encoding;
-    //       // if (encoding === 'SHIFT_JIS') {encoding = 'SJIS';}
-    //       // else if (encoding === 'EUC-JP') {encoding = 'EUCJP';}
-    //       // else if (encoding === 'ISO-2022-JP') {encoding = 'JIS';}
-    //       // console.log(encoding);
-    //       var encoding = 'UTF8';
-
-    //       var utf8Array = Encoding.convert(buf, 'UNICODE', encoding);
-    //       var content = Encoding.codeToString(utf8Array);
-    //       var session = new Session({path: path, content: content});
-    //       sessionList.add(session);
-    //       // editor.setSession(session.get('session'));
-    //     });
-    //   }, {multiple: false});
-    // });
-    // menu.appendItem(fileMenu);
-    // console.log('set menu');
-    // Ti.UI.currentWindow.menu = menu;
 
     // init sidebar
     $('#dragbar').mousedown(function (e) {
