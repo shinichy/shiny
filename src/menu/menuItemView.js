@@ -21,6 +21,9 @@ define(function (require, exports, module) {
     },
     activate: function () {
       this.$el.append(this.subMenuListView.el);
+      if (this.model.get('command')) {
+        this.model.get('command').execute(this);
+      }
     }
   });
 

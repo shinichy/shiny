@@ -15,29 +15,19 @@ require.config({
 });
 
 define(function (require) {
-  var ace = require('ace/ace');
+  // var ace = require('ace/ace');
 
   // Set global objects
   var DEBUG = true;
   var fn = Function, global = fn('return this')();
   global.DEBUG = DEBUG;
 
-  var SessionList = require('sessionList');
-  // var TabListView = require('tabListView');
-  var EditorView = require('editorView');
   var MenuManager = require('menu/menuManager');
+  var GroupManager = require('groupManager');
 
   function _onReady() {
-    // init editor
-    var editor = ace.edit('editor');
-    editor.setTheme('ace/theme/twilight');
-    editor.getSession().setMode('ace/mode/javascript');
-    var sessionList = new SessionList();
-    var editorView = new EditorView({
-      editor: editor,
-      collection: sessionList
-    });
 
+    GroupManager.init($('#main-view'));
     MenuManager.init($('#main-menu'));
 
     // var tabListView = new TabListView({
@@ -45,10 +35,6 @@ define(function (require) {
     //   collection: sessionList
     // });
 
-    // init file dialog
-    $('#fileDialog').change(function (evt) {
-      console.log(evt);
-    });
 
     // create menus
     // var menubar = new gui.Menu({type: 'menubar'});

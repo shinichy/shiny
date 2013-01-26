@@ -7,6 +7,7 @@ define(function (require, exports) {
   var MenuItem = require('menu/menuItem');
   var MenuItemList = require('menu/menuItemList');
   var MainMenuItemListView = require('menu/menuItemListView');
+  var FileOpenCommand = require('command/fileOpenCommand');
 
   function init(mainMenu) {
     var mainMenuList = new MenuItemList();
@@ -15,7 +16,10 @@ define(function (require, exports) {
     var fileMenu = new MenuItem({name: 'File'});
     mainMenuList.add(fileMenu);
     fileMenu.get('items').add(new MenuItem({name: 'New'}));
-    fileMenu.get('items').add(new MenuItem({name: 'Open'}));
+
+    fileMenu.get('items').add(new MenuItem({name: 'Open',
+      command: FileOpenCommand}));
+
     mainMenuList.add(new MenuItem({name: 'Edit'}));
   }
 

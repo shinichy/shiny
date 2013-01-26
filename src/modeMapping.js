@@ -1,13 +1,18 @@
-define(function(require, exports, module) {
+/*jshint indent:2 */
+/*global define */
+
+define(function (require, exports) {
   var _modeMapping = {
-    '.js': 'ace/mode/javascript'
+    'js': 'ace/mode/javascript'
   };
 
-  var getMode = function(ext) {
-    if (!ext) {throw 'ext is ' + ext;}
+  var getMode = function getMode(ext) {
+    if (ext.lastIndexOf('.') !== -1) {
+      return getMode(ext.substr(ext.lastIndexOf('.') + 1));
+    }
 
     return _modeMapping[ext] || 'ace/mode/text';
   };
 
-  module.exports.getMode = getMode;
+  exports.getMode = getMode;
 });
