@@ -15,8 +15,6 @@ define(function (require, exports) {
       collection: mainMenuList});
     var fileMenu = new MenuItem({name: 'File'});
     mainMenuList.add(fileMenu);
-    fileMenu.get('items').add(new MenuItem({name: 'New'}));
-
     fileMenu.get('items').add(new MenuItem({name: 'Open',
       command: FileOpenCommand}));
 
