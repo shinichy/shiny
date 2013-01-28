@@ -14,8 +14,7 @@ define(function (require, exports, module) {
       this.subMenuListView = options.subMenuListView;
     },
     render: function () {
-      this.$el.html(_.template(
-        $(this.templateId).html(),
+      this.$el.html(_.template(MenuItemViewBase.getTemplate(this.templateId),
         {name: this.model.get('name')}));
       return this;
     },
@@ -25,6 +24,8 @@ define(function (require, exports, module) {
         this.model.get('command').execute(this);
       }
     }
+  }, {
+    getTemplate: _.memoize(function (q) { return $(q).html(); })
   });
 
   var MainMenuItemView = MenuItemViewBase.extend({
