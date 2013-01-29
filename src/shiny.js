@@ -21,12 +21,14 @@ define(function (require) {
   global.DEBUG = DEBUG;
 
   var MenuManager = require('menu/menuManager');
-  var GroupManager = require('groupManager');
+  var StatusBar = require('statusbar');
+  require('mainView');
 
   function _onReady() {
-
-    GroupManager.init($('#main-view'));
     MenuManager.init($('#main-menu'));
+    new StatusBar({
+      el: '#statusbar > div'
+    });
 
     // init sidebar
     $('#dragbar').mousedown(function (e) {

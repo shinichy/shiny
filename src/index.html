@@ -25,9 +25,8 @@
       <div id="first-editor" class="editor"></div>
     </div>
   </div>
-  <div id="status-bar" class="navbar navbar-fixed-bottom">
+  <div id="statusbar" class="navbar navbar-fixed-bottom">
     <div class="navbar-inner">
-      <div>Line 29, Column 5</div>
     </div>
   </div>
 
@@ -38,13 +37,17 @@
 
   <script data-main="shiny" src="lib/require.js"></script>
 
-  <!-- Templates for Backbone View -->
+  <!-- BEGIN: Underscore Template Definition. -->
   <script type="text/template" id="main-menu-item">
   <a class="menu-item-name dropdown-toggle" data-toggle="dropdown" href="#"><%= name %></a>
   </script>
   <script type="text/template" id="dropdown-menu-item">
   <a class="menu-item-name"><%= name %></a>
   </script>
+  <script type="text/template" id="line-column">
+  Line <%= line %>, Column <%= column %>
+  </script>
+  <!-- END: Underscore Template Definition. -->
 
 </body>
 </html>

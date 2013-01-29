@@ -1,5 +1,5 @@
 /*jshint indent:2 */
-/*global define, Backbone, _, $ */
+/*global define, Backbone */
 
 define(function (require, exports, module) {
   'use strict';
@@ -7,7 +7,7 @@ define(function (require, exports, module) {
   var GroupView = Backbone.View.extend({
     className: 'group',
     initialize: function (options) {
-      this.$el.append(options.editorView.render().el);
+      this.$el.append(options.view.render().el);
     }
   });
 
