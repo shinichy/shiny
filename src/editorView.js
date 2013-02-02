@@ -6,7 +6,7 @@ define(function (require, exports, module) {
 
   var ace = require('ace/ace');
 
-  var EditorView = Backbone.View.extend({
+  module.exports = Backbone.View.extend({
     initialize: function () {
       _.bindAll(this, 'activeSessionChanged');
       this.editor = ace.edit(this.el);
@@ -31,6 +31,4 @@ define(function (require, exports, module) {
       return this.collection.getActiveEditSession();
     }
   });
-
-  module.exports = EditorView;
 });

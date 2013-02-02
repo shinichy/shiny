@@ -5,7 +5,7 @@ define(function (require, exports, module) {
   var EditSession = require('ace/edit_session').EditSession;
   var ModeMapping = require('modeMapping');
 
-  var Session = Backbone.Model.extend({
+  module.exports = Backbone.Model.extend({
     defaults: {
       isActivated: false
     },
@@ -17,6 +17,4 @@ define(function (require, exports, module) {
       delete attrs.content;
     }
   });
-
-  module.exports = Session;
 });
