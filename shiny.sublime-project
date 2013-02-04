@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/shinichi/programming/shiny",
+      "folder_exclude_patterns": ["build", "node_modules"]
+		}
+	]
+}

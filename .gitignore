@@ -5,7 +5,6 @@
 *.out
 *.pid
 *.gz
-*.sublime-project
 *.sublime-workspace
 
 build

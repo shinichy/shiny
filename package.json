@@ -5,7 +5,8 @@
   "devDependencies": {
     "grunt": "~0.3.17",
     "grunt-requirejs": "~0.3.1",
-    "grunt-rsync": "0.0.5"
+    "grunt-rsync": "0.0.5",
+    "grunt-jasmine-task": "~0.2.3"
   },
   "repository": {
     "type": "git",

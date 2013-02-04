@@ -2,6 +2,8 @@
 /*global define, require */
 
 require.config({
+  baseUrl: '.',
+  urlArgs: 'cb=' + Math.random(),
   paths: {
     ace: 'lib/ace'
     // jschardet: 'lib/jschardet'

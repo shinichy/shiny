@@ -1,9 +1,13 @@
 /*jshint indent:2 */
-/*global module */
+/*global module, require */
 
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    jasmine : {
+      all: ['test/index.html']
+      // errorReporting: true
+    },
     requirejs: {
       compile: {
         options: {
@@ -37,6 +41,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-rsync');
+  grunt.loadNpmTasks('grunt-jasmine-task');
 
-  grunt.registerTask('default', ['requirejs', 'rsync']);
+  grunt.registerTask('default', ['jasmine']);
+  grunt.registerTask('deploy', ['requirejs', 'rsync']);
 };
