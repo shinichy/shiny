@@ -22,27 +22,12 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
-    // Please see https://github.com/jedrichards/rsyncwrapper for options.
-    rsync: {
-      dist: {
-        src: './build/',
-        dest: '/share/HDA_DATA/Qweb/shiny',
-        host: 'admin@home.suplik.net',
-        recursive: true,
-        // Optional boolean, delete objects in dest that aren't present
-        // in src. Take care with this option, since misconfiguration
-        // could cause data loss. Maybe dryRun first?
-        syncDest: true,
-        exclude: ['.git*', '*.scss']
-      }
     }
   });
 
   grunt.loadNpmTasks('grunt-requirejs');
-  grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-jasmine-task');
 
   grunt.registerTask('default', ['jasmine']);
-  grunt.registerTask('deploy', ['requirejs', 'rsync']);
+  grunt.registerTask('build', ['requirejs']);
 };

@@ -15,5 +15,6 @@ results
 pids
 tmp
 
+deploy.sh
 npm-debug.log
 .DS_Store
