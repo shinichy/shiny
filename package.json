@@ -15,5 +15,8 @@
   "author": "Shinichi Katayama",
   "license": "MIT",
   "readmeFilename": "README.md",
+  "scripts": {
+    "test": "grunt -v"
+  },
   "gitHead": "2edad35843ac973941ba225827731895cb7ec307"
 }
