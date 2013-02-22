@@ -1,0 +1,24 @@
+{
+  "camelcase": true,
+  "curly": true,
+  "forin": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "noempty": true,
+  "nonew": true,
+  "quotmark": "single",
+  "regexp": true,
+  "undef": true,
+  "unused": false,
+  "trailing": true,
+
+  // "evil": true,
+  // "regexdash": true,
+  "browser": true,
+  "devel": true,
+  "jquery": true
+  // "wsh": true,
+  // "sub": true
+}
