@@ -26,6 +26,7 @@ require([], function () {
   var specs = [];
 
   specs.push('spec/editorViewSpec');
+  specs.push('spec/menuItemSpec');
 
   $(function () {
     require(specs, function () {
