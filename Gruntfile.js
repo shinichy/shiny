@@ -1,23 +1,24 @@
 /*jshint indent:2 */
 /*global module, require */
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     connect: {
-      port : 8000
+      test: {
+        port: 8000
+      }
     },
     jasmine: {
       tests: {
         options: {
           specs: 'test/spec/**/*Spec.js',
           vendor: [
-          'src/lib/jquery-1.8.3.min.js',
-          'src/lib/underscore-min.js',
-          'src/lib/backbone-min.js',
-          'src/lib/bootstrap.js'
-          ],
-          host: 'http://127.0.0.1:<%= connect.port %>/',
+            'src/lib/jquery-1.8.3.min.js',
+            'src/lib/underscore-min.js',
+            'src/lib/backbone-min.js',
+            'src/lib/bootstrap.js'],
+          host: 'http://127.0.0.1:<%= connect.test.port %>/',
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
             requireConfig: {
@@ -38,11 +39,9 @@ module.exports = function (grunt) {
           baseUrl: './',
           mainConfigFile: './src/shiny.js',
           dir: './build',
-          modules: [
-          {
+          modules: [{
             name: 'shiny'
-          }
-          ]
+          }]
         }
       }
     }
