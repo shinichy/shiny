@@ -1,0 +1,1 @@
+define(["require","exports","module","menu/menuItemList"],function(e,t,n){var r=e("menu/menuItemList"),i=Backbone.Model.extend({initialize:function(){this.set({items:new r})}});n.exports=i});

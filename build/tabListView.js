@@ -1,0 +1,1 @@
+define(["require","exports","module"],function(e,t,n){TabListView=Backbone.View.extend({initialize:function(e){_.bindAll(this,"appendItem"),this.collection.on("add",this.appendItem)},appendItem:function(e){var t=new TabView({model:e});this.$el.append(t.render().el)}}),n.exports=TabListView});

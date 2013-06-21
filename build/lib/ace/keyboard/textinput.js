@@ -1,0 +1,31 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Distributed under the BSD license:
+ *
+ * Copyright (c) 2010, Ajax.org B.V.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of Ajax.org B.V. nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL AJAX.ORG B.V. BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+define(["require","exports","module","../lib/event","../lib/useragent","../lib/dom","../lib/lang"],function(e,t,n){var r=e("../lib/event"),i=e("../lib/useragent"),s=e("../lib/dom"),o=e("../lib/lang"),u=function(e,t){function g(e){if(c)return;var t=e?2:1,r=2;try{n.setSelectionRange(t,r)}catch(i){}}function y(){if(c)return;n.value=u,i.isWebKit&&m.schedule()}function D(){setTimeout(function(){h&&(n.style.cssText=h,h=""),t.renderer.$keepTextAreaAtCursor==null&&(t.renderer.$keepTextAreaAtCursor=!0,t.renderer.$moveTextAreaToCursor())},0)}var n=s.createElement("textarea");n.className="ace_text-input",i.isTouchPad&&n.setAttribute("x-palm-disable-auto-cap",!0),n.wrap="off",n.autocorrect="off",n.autocapitalize="off",n.spellcheck=!1,n.style.top="-2em",e.insertBefore(n,e.firstChild);var u="",a=!1,f=!1,l=!1,c=!1,h="",p=!0,d=document.activeElement===n;r.addListener(n,"blur",function(){t.onBlur(),d=!1}),r.addListener(n,"focus",function(){d=!0,t.onFocus(),g()}),this.focus=function(){n.focus()},this.blur=function(){n.blur()},this.isFocused=function(){return d};var v=o.delayedCall(function(){d&&g(p)}),m=o.delayedCall(function(){c||(n.value=u,d&&g())});i.isWebKit||t.addEventListener("changeSelection",function(){t.selection.isEmpty()!=p&&(p=!p,v.schedule())}),y(),d&&t.onFocus();var b=function(e){return e.selectionStart===0&&e.selectionEnd===e.value.length};!n.setSelectionRange&&n.createTextRange&&(n.setSelectionRange=function(e,t){var n=this.createTextRange();n.collapse(!0),n.moveStart("character",e),n.moveEnd("character",t),n.select()},b=function(e){try{var t=e.ownerDocument.selection.createRange()}catch(n){}return!t||t.parentElement()!=e?!1:t.text==e.value});if(i.isOldIE){var w=!1,E=function(e){if(w)return;var t=n.value;if(c||!t||t==u)return;if(e&&t==u[0])return S.schedule();N(t),w=!0,y(),w=!1},S=o.delayedCall(E);r.addListener(n,"propertychange",E);var x={13:1,27:1};r.addListener(n,"keyup",function(e){c&&(!n.value||x[e.keyCode])&&setTimeout(_,0);if((n.value.charCodeAt(0)||0)<129)return;c?M():O()})}var T=function(e){if(a){a=!1;return}if(f){f=!1;return}b(n)&&(t.selectAll(),g())},N=function(e){l?(g(),e&&t.onPaste(e),l=!1):e==u[0]?t.execCommand("del",{source:"ace"}):(e.substring(0,2)==u?e=e.substr(2):e[0]==u[0]?e=e.substr(1):e[e.length-1]==u[0]&&(e=e.slice(0,-1)),e[e.length-1]==u[0]&&(e=e.slice(0,-1)),e&&t.onTextInput(e))},C=function(e){if(c)return;var t=n.value;y(),N(t)},k=function(e){var i=t.getCopyText();if(!i){r.preventDefault(e);return}var s=e.clipboardData||window.clipboardData;if(s){var o=s.setData("Text",i);o&&(t.onCut(),r.preventDefault(e))}o||(a=!0,n.value=i,n.select(),setTimeout(function(){a=!1,y(),g(),t.onCut()}))},L=function(e){var i=t.getCopyText();if(!i){r.preventDefault(e);return}var s=e.clipboardData||window.clipboardData;if(s){var o=s.setData("Text",i);o&&(t.onCopy(),r.preventDefault(e))}o||(f=!0,n.value=i,n.select(),setTimeout(function(){f=!1,y(),g(),t.onCopy()}))},A=function(e){var s=e.clipboardData||window.clipboardData;if(s){var o=s.getData("Text");o&&t.onPaste(o),i.isIE&&setTimeout(g),r.preventDefault(e)}else n.value="",l=!0};r.addCommandKeyListener(n,t.onCommandKey.bind(t)),r.addListener(n,"select",T),r.addListener(n,"input",C),r.addListener(n,"cut",k),r.addListener(n,"copy",L),r.addListener(n,"paste",A),(!("oncut"in n)||!("oncopy"in n)||!("onpaste"in n))&&r.addListener(e,"keydown",function(e){if(i.isMac&&!e.metaKey||!e.ctrlKey)return;switch(e.keyCode){case 67:L(e);break;case 86:A(e);break;case 88:k(e)}});var O=function(e){c=!0,t.onCompositionStart(),setTimeout(M,0)},M=function(){if(!c)return;t.onCompositionUpdate(n.value)},_=function(e){c=!1,t.onCompositionEnd()};r.addListener(n,"compositionstart",O),i.isGecko?r.addListener(n,"text",M):r.addListener(n,"keyup",M),r.addListener(n,"compositionend",_),this.getElement=function(){return n},this.onContextMenu=function(e){h||(h=n.style.cssText),n.style.cssText="z-index:100000;"+(i.isIE?"opacity:0.1;":""),g(t.selection.isEmpty()),t._emit("nativecontextmenu",{target:t});var s=t.container.getBoundingClientRect(),o=function(e){n.style.left=e.clientX-s.left-2+"px",n.style.top=e.clientY-s.top-2+"px"};o(e);if(e.type!="mousedown")return;t.renderer.$keepTextAreaAtCursor&&(t.renderer.$keepTextAreaAtCursor=null),i.isWin&&r.capture(t.container,o,D)},this.onContextMenuClose=D,i.isGecko||r.addListener(n,"contextmenu",function(e){t.textInput.onContextMenu(e),D()})};t.TextInput=u});

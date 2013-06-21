@@ -1,0 +1,1 @@
+define(["require","exports","module","lineColumnView"],function(e,t,n){var r=e("lineColumnView"),i=Backbone.View.extend({initialize:function(){this.addView(new r)},addView:function(e){this.$el.append(e.render().el)}});n.exports=i});

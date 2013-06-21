@@ -1,0 +1,1 @@
+define(["require","exports","module"],function(e,t,n){var r=Backbone.View.extend({className:"group",initialize:function(e){this.$el.append(e.view.render().el)}});n.exports=r});
